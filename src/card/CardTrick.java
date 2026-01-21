@@ -10,6 +10,9 @@ import java.util.Scanner;
  * and then asks the user to pick a card and searches the array of cards
  * for the match to the user's card. To be used as starting code in ICE 1
  * @author srinivsi
+ * @modified Ajay Prashad
+ * @date 2026-01-21
+
  */
 public class CardTrick {
     
@@ -50,18 +53,26 @@ public class CardTrick {
         userCard.setSuit(Card.SUITS[cardSuit]);
         userCard.setValue(cardValue);
 
-        // and search magicHand here
+       // and search magicHand here
+       boolean found = false;
         for (Card card : magicHand) {
+       //Then report the result here
             if (card.getSuit().equals(userCard.getSuit()) && card.getValue() == userCard.getValue()) {
-                System.out.println("\nYour card is in the pile!");
-            } else {
-                System.out.println("Sorry, your card is not in the magic hand.");
+                found = true;
             }
         }
-        //Then report the result here
+            if (found){
+            System.out.println("\nYour card is in the pile!");
+
+            }
+            else{
+            System.out.println("Sorry, your card is not in the magic hand.");
+            }
+
         // add one luckcard hard code 2,clubs
         magicHand[0].setSuit(Card.SUITS[3]);
         magicHand[0].setValue(2);
+        
 
     }
     
