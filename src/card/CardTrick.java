@@ -47,7 +47,7 @@ public class CardTrick {
         System.out.print("Enter a card value (1-13): ");
         int cardValue = scan.nextInt ();
         scan.nextLine();
-        System.out.print("\nEnter a suit (0-3 where 0=Hearts,1=Diamonds,2-Clubs,3=Spades): ");
+        System.out.print("\nEnter a suit (0-3 where 0=Hearts,1=Diamonds,2-Spades,3=Clubs): ");
         int cardSuit = scan.nextInt();
         
         userCard.setSuit(Card.SUITS[cardSuit]);
