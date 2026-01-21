@@ -18,40 +18,45 @@ public class CardTrick {
         Card[] magicHand = new Card[7];
         
         Random r = new Random();
-        //Random number between 0-3
-        int randomSuit = r.nextInt(3);
         //Random number between 1-13
-        int randomValue = r.nextInt(3)+1;
 
         Scanner scan = new Scanner(System.in);
 
         for (int i=0; i<magicHand.length; i++)
         {
             Card c = new Card();
+            
             //c.setValue(insert call to random number generator here)
+            int randomValue = r.nextInt(13)+1;
             c.setValue(randomValue);
             //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+            int randomSuit = r.nextInt(4);
             c.setSuit(Card.SUITS[randomSuit]);
+            magicHand[i] = c;
+        
+        //Printing off all of the randomly
+            System.out.println(magicHand[i].getSuit() + " " + magicHand[i].getValue());
+
         }
-        //Printing off all of the randomly 
         //insert code to ask the user for Card value and suit, create their card
+        
+        Card userCard = new Card();
         System.out.print("Enter a card value (1-13): ");
         int cardValue = scan.nextInt ();
+        scan.nextLine();
         System.out.print("\nEnter a suit (0-3 where 0=Hearts,1=Diamonds,2-Clubs,3=Spades): ");
-        String cardSuit = scan.nextLine();
-
-        Card userCard = new Card();
+        int cardSuit = scan.nextInt();
+        
+        userCard.setSuit(Card.SUITS[cardSuit]);
         userCard.setValue(cardValue);
-        userCard.setSuit(cardSuit);
 
         // and search magicHand here
-        for(int i = 0;i<magicHand.length;i++){
-            if (magicHand[i].getSuit().equals(cardSuit) && magicHand[i].getValue() == cardValue ){
-                System.out.println("Your card is in the pile!");
+        for (Card card : magicHand) {
+            if (card.getSuit().equals(userCard.getSuit()) && card.getValue() == userCard.getValue()) {
+                System.out.println("\nYour card is in the pile!");
+            } else {
+                System.out.println("Sorry, your card is not in the magic hand.");
             }
-            else{
-                System.out.println("\nSorry, your card is not in the magic hand.");
-                }
         }
         //Then report the result here
         // add one luckcard hard code 2,clubs
